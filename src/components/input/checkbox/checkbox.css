@@ -12,6 +12,7 @@ input[type="checkbox"] {
   margin-top: 0.3rem;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 
 input[type="checkbox"]::before {

@@ -89,6 +89,9 @@
   border-bottom: 1px solid #eee;
 }
 
+.selectedRow {
+  background: #EFEDFD;
+}
 
 .tableGrid--bodyRow{
   display: flex;

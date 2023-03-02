@@ -1,13 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './radiobutton.css';
-
-const customfn = (e) => { console.log(e.target) }
+import { TableContext } from '../../../lib/contexts/TableContext'
+import { updateSelection } from '../../../utils/table.utils'
 
 const RadioButton = (props) => {
-  const { innerRef, name, onSelect = customfn, checked } = props;
+  let {
+    selectedRows = [], 
+    updatedSelectedRows
+    } = useContext(TableContext);
+
+  const customfn = (e) => {
+    if (e.target.checked === true) {
+      // selectedRows = []
+      // selectedRows.unshift(Number(e.target.value))
+      selectedRows = updateSelection(selectedRows, e.target.value, "radiobutton")
+      updatedSelectedRows(selectedRows)
+      console.log(selectedRows)
+    } else {
+      console.log("unchecked")
+    }
+  }
+  const { innerRef, name, value, onSelect = customfn, checked } = props;
 
   return (
-      <input ref={innerRef} type="radio"  name={name} id="outline"  onChange={e => onSelect(e)} className="custom-radio" checked={checked}></input>
+      <input ref={innerRef} type="radio"  name={name} id="outline"  onChange={onSelect} className="custom-radio" checked={checked} value={value} ></input>
   )
 }
 

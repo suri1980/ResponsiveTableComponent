@@ -8,18 +8,16 @@ const TableHeader = () => {
         tableHeaderData = [],
         tableRowsData = [],
         tableRowSelectInputType = '',
-        handleSelectAll,
-        getSelectedRowsIndex,
         sortOptions,
         updateRowsData,
         updateSortOptions,
+        selectedRows = [], 
+        updatedSelectedRows
     } = useContext(TableContext)
-
-    // console.log(sortOptions)
 
     var { sortBy, sortOrder: orderBy} = sortOptions
     let selectedRowIndex = tableRowsData.map(row => row.id)
-    const isAllRowsSelected = (getSelectedRowsIndex()?.length > 0 && getSelectedRowsIndex()?.length === selectedRowIndex?.length)
+    const isAllRowsSelected = (selectedRowIndex?.length > 0 && selectedRowIndex?.length === selectedRows?.length)
 
     const updateSortedRowsData = (sortedRowData) => {
         updateRowsData(sortedRowData)
@@ -46,9 +44,8 @@ const TableHeader = () => {
             (tableRowSelectInputType === 'checkbox') ? (
                 <div className='tableGrid--headerRow--dataCell__select'> 
                     <Checkbox name="selection" checked={isAllRowsSelected} onSelect={(e) => {
-                        handleSelectAll(
-                            e.target.checked
-                        )
+                        let selectedRowIndex = tableRowsData.map(row => row['id'])
+                        e.target.checked ? updatedSelectedRows(selectedRowIndex): updatedSelectedRows([])
                     }} />
                </div>
             ) : (<div className='tableGrid--headerRow--dataCell__select' />)

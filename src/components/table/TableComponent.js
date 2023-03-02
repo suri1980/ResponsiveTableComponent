@@ -22,46 +22,15 @@ const TableComponent = (props) => {
     } = props
 
     const [tableRowsData, updateRowsData] = useState(data)
-    const [selectedRowsIndex, updateSelectedRowsIndexState] = useState([])
     const [sortOptions, updateSortOptions] = useState({
       sortBy: 'id',
       sortOrder: 'nuetral'
     })
+    
+    const [selectedRows, updatedSelectedRows] = useState([])
+    
     const lineRefs = useRef([]);
 
-    const getSelectedRowsIndex = () => {
-      let currentRowIndexes = []
-      if (selectedRowsIndex) {
-        currentRowIndexes = [...new Set(selectedRowsIndex)]
-      }
-      return currentRowIndexes
-    }
-
-    const onRowSelection = (rowData) => {
-      //console.log(getSelectedRowsIndex())
-    }
-
-    const updateSelectedRowsIndex = (newRowIndex, selectRow = true) => {
-      if (tableRowSelectInputType === 'radiobutton') {
-        updateSelectedRowsIndexState([newRowIndex])
-        return;
-      }
-
-      if (selectRow) {
-        updateSelectedRowsIndexState([
-          ...getSelectedRowsIndex(),
-          newRowIndex
-        ]);
-      } else {
-        const currentRowIndexes = getSelectedRowsIndex()
-        const unCheckedRowIndex = currentRowIndexes.indexOf(newRowIndex);
-        currentRowIndexes.splice(unCheckedRowIndex, 1);
-        updateSelectedRowsIndexState([
-          currentRowIndexes
-        ])
-      }
-    }
-    
     const tableContext = {
       datatype,
       tableHeaderData,
@@ -70,41 +39,12 @@ const TableComponent = (props) => {
       tableFooterCaption,
       tableRowSelectInputType,
       updateRowsData,
-      getSelectedRowsIndex,
-      onRowSelection,
       totalColumns,
       mediaWidth,
       sortOptions,
       updateSortOptions,
-      handleSelectAll: (isSelected) => {
-        let selectedRowIndex = []
-        selectedRowIndex = tableRowsData.map(row => row['id'])
-        updateSelectedRowsIndexState(
-          ...(
-            isSelected ? [selectedRowIndex] : []
-          )
-        )
-      },
-      updateSelectedRowsIndex: (newRowIndex, selectRow = true) => {
-        if (tableRowSelectInputType === 'radiobutton') {
-          updateSelectedRowsIndexState([newRowIndex])
-          return;
-        }
-  
-        if (selectRow) {
-          updateSelectedRowsIndexState([
-            ...getSelectedRowsIndex(),
-            newRowIndex
-          ]);
-        } else {
-          const currentRowIndexes = getSelectedRowsIndex()
-          const unCheckedRowIndex = currentRowIndexes.indexOf(newRowIndex);
-          currentRowIndexes.splice(unCheckedRowIndex, 1);
-          updateSelectedRowsIndexState([
-            currentRowIndexes
-          ])
-        }
-      }
+      updatedSelectedRows,
+      selectedRows
     }
 
   return (

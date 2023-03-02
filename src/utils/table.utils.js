@@ -17,3 +17,20 @@ export function sortTableRows(data, by, order) {
   
     return [...data].sort(compare);
   }
+
+
+  export function updateSelection(selectedRows, v, type) {
+    if (type === 'radiobutton') {
+      selectedRows = []
+      selectedRows.unshift(Number(v))
+    } else if (type === 'checkbox') {
+      selectedRows = selectedRows && [].concat(...selectedRows, [Number(v)])
+    }
+
+    return selectedRows
+  }
+
+  export function updateDeselection(selectedRows, v) {
+    selectedRows = selectedRows && selectedRows.filter(i => i !== Number(v))
+    return selectedRows
+  }

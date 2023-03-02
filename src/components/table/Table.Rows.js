@@ -2,45 +2,30 @@ import React, { useRef, createRef, useContext } from 'react'
 import { TableContext } from '../../lib/contexts/TableContext'
 import RadioButton from '../input/radiobutton/RadioButton'
 import Checkbox from '../input/checkbox/CheckBox'
-
+import { updateSelection, updateDeselection } from '../../utils/table.utils'
 
 const TableRows = () => {
 
     const {
-        datatype,
         tableRowsData = [],
         tableHeaderData = [],
-        tableHeaderCaption,
-        tableFooterCaption,
         tableRowSelectInputType,
-        rowsSelectionType,
-        onRowSelection,
-        getSelectedRowsIndex,
-        updateSelectedRowsIndex
+        selectedRows = [], 
+        updatedSelectedRows
         } = useContext(TableContext);
+    
     const lineRefs = useRef([]);
 
-    const updateSelectedSingleRow = (rowId) => {
-        updateSelectedRowsIndex(rowId)
-        }
-    
-    const updateSelectedMultipleRows = (rowId) => {
-    updateSelectedRowsIndex(rowId)
-    }
-
-    const updateDeselectedRow = (rowId) => {
-    updateSelectedRowsIndex(rowId, false)
-    }
-
-    const updatedSelectStatus = (rowData, isRowSelected) => {
+    const onRowSelection = (rowData, isRowSelected, selectedRows) => {
         const { id } = rowData
         if (tableRowSelectInputType === 'radiobutton') {
-            updateSelectedSingleRow(id)
+            updatedSelectedRows(updateSelection(selectedRows, id, tableRowSelectInputType))
         } else if (tableRowSelectInputType === 'checkbox') {
-            const updateSelectedRowsMethod = (isRowSelected) ? updateSelectedMultipleRows : updateDeselectedRow;
-            updateSelectedRowsMethod(id);
+          const selectedRows = (isRowSelected) ? 
+            updateSelection(selectedRows || [], id, tableRowSelectInputType) 
+            : updateDeselection(selectedRows, id)
+          updatedSelectedRows(selectedRows)
         }
-        onRowSelection(rowData);
     }
     
     return (
@@ -50,43 +35,43 @@ const TableRows = () => {
                     <span>No data!</span>
                 :
                 tableRowsData.map( (rowData, index) => {
-                const {id} = rowData
-                let isRowSelected = getSelectedRowsIndex().includes(id)
-                const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')
-                lineRefs.current[index] = lineRefs.current[index] || createRef()
-                return (
-                    <div className='tableGrid--bodyRow' onClick={ canSelectRow ? (e) => {
-                    const isInputChecked = lineRefs.current[index].current.checked || false
-                    console.log(rowData)
-                    console.log(lineRefs.current[index])
-                    updatedSelectStatus(rowData, !isInputChecked) 
-                    }: ()=>{}} key={`select-${id}`}>
-                    {
-                    tableRowSelectInputType === 'radiobutton' && (
-                        <div className='tableGrid--bodyRow--dataCell__select' >
-                        <RadioButton innerRef={lineRefs.current[index]} key={`radio-${id}`} name="selection" checked={isRowSelected} />
-                        </div>
-                    )
-                    }
-                    {
-                    tableRowSelectInputType === 'checkbox' && (
-                        <div className='tableGrid--bodyRow--dataCell__select'>
-                        <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} />
-                        </div>
-                    )
-                    }
-                    {
-                    (tableHeaderData.map( column => {
-                        const { id, gridSelector } = column;
-                        return(
-                            <div className='tableGrid--bodyRow--dataCell' key={`${gridSelector}-bodyRow-${id}`}>
-                            {rowData[gridSelector]}
+                    const {id} = rowData
+                    console.log("In Component",selectedRows)
+                    let isRowSelected = selectedRows.includes(id)
+                    let rowSelectClass = isRowSelected ? 'selectedRow' : ''
+                    const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')
+                    lineRefs.current[index] = lineRefs.current[index] || createRef()
+                    return (
+                        <div className={`tableGrid--bodyRow ${rowSelectClass}`} onClick={ canSelectRow ? (e) => {
+                            const isInputChecked = lineRefs.current[index].current.checked || false
+                            onRowSelection(rowData, !isInputChecked, selectedRows) 
+                        }: ()=>{}} key={`select-${id}`} >
+                        {
+                        tableRowSelectInputType === 'radiobutton' && (
+                            <div className='tableGrid--bodyRow--dataCell__select' >
+                            <RadioButton innerRef={lineRefs.current[index]} key={`radio-${id}`} name="selection" checked={isRowSelected} value={id} />
                             </div>
                         )
-                        }))
-                    }
-                    </div>
-                )
+                        }
+                        {
+                        tableRowSelectInputType === 'checkbox' && (
+                            <div className='tableGrid--bodyRow--dataCell__select'>
+                            <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} value={id} />
+                            </div>
+                        )
+                        }
+                        {
+                        (tableHeaderData.map( column => {
+                            const { id, gridSelector } = column;
+                            return(
+                                <div className='tableGrid--bodyRow--dataCell' key={`${gridSelector}-bodyRow-${id}`}>
+                                {rowData[gridSelector]}
+                                </div>
+                            )
+                            }))
+                        }
+                        </div>
+                    )
                 })
             }
         </div>
