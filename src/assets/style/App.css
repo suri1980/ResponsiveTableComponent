@@ -101,12 +101,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: top;
+  font-family: "Avenir";
 }
 .miniTableGrid--bodyRow-dateCell--dataKey{
-  width:50%;
+  width:45%;
   font-weight: bold;
 }
 .miniTableGrid--bodyRow-dateCell--dataValue{
-  width:50%;
+  width:55%;
   margin-left: 1px;
 }
