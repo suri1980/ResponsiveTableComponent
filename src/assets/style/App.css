@@ -1,0 +1,112 @@
+.App {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tableGrid{
+  border: 1px solid #eee;
+  border-radius: 9px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+  width: clamp(90vw, 1390px, 40vw);
+}
+
+.mobileTableGrid {
+  border: 1px solid #eee;
+  border-radius: 9px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+  width: clamp(90vw, 1390px, 40vw);
+}
+
+.tableGrid--headerRow {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F7F7F7;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 0 1em;
+}
+.miniTableGrid--headerRow {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #F7F7F7;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 0 1em;
+}
+
+.tableGrid--headerRow--dataCell {
+  padding: 30px;
+  text-align: left;
+  width: 30%;
+  font-family: "Avenir Heavy";
+  font-size: clamp(16px, 0.6rem + 0.65vw, 20px);
+}
+
+.miniTableGrid--headerRow--dataCell {
+  padding: 30px;
+  text-align: left;
+  width: 70%;
+  font-family: "Avenir Heavy";
+  font-size: clamp(16px, 0.6rem + 0.65vw, 20px);
+}
+
+.tableGrid--headerRow--dataCell__select {
+  padding-left: 10px;
+  padding-top: 30px;
+  width: 1.2%;
+  border-bottom: 1px solid #eee;
+}
+
+
+.tableGrid--bodyRow{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.miniTableGrid--bodyRow{
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1em;
+}
+
+.tableGrid--bodyRow--dataCell {
+  padding: 30px;
+  text-align: left;
+  width: 30%;
+  font-family: "Avenir";
+  font-size: clamp(16px, 0.6rem + 0.65vw, 20px);
+  border-bottom: 1px solid #eee;
+}
+
+.miniTableGrid--bodyRow--dataCell {
+  padding: 30px;
+  text-align: left;
+  width: 70%;
+  font-family: "Avenir";
+  font-size: clamp(16px, 0.6rem + 0.65vw, 20px);
+  border-bottom: 1px solid #eee;
+}
+
+.tableGrid--bodyRow--dataCell__select {
+  padding-left: 10px;
+  padding-top: 30px;
+  width: 1.2%;
+  border-bottom: 1px solid #eee;
+}
+
+.miniTableGrid--bodyRow-dateCell--data{
+  display: flex;
+  justify-content: flex-start;
+  align-items: top;
+}
+.miniTableGrid--bodyRow-dateCell--dataKey{
+  width:50%;
+  font-weight: bold;
+}
+.miniTableGrid--bodyRow-dateCell--dataValue{
+  width:50%;
+  margin-left: 1px;
+}
