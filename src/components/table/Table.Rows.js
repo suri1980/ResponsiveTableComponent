@@ -46,6 +46,9 @@ const TableRows = () => {
     return (
         <div>
             {
+                tableRowsData.length <=0 ?
+                    <span>No data!</span>
+                :
                 tableRowsData.map( (rowData, index) => {
                 const {id} = rowData
                 let isRowSelected = getSelectedRowsIndex().includes(id)
