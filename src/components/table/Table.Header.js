@@ -40,7 +40,7 @@ const TableHeader = () => {
 
   return (
     <div className='tableGrid--headerRow'>
-        {
+        {   
             (tableRowSelectInputType === 'checkbox') ? (
                 <div className='tableGrid--headerRow--dataCell__select'> 
                     <Checkbox name="selection" checked={isAllRowsSelected} onSelect={(e) => {
@@ -48,8 +48,8 @@ const TableHeader = () => {
                         e.target.checked ? updatedSelectedRows(selectedRowIndex): updatedSelectedRows([])
                     }} />
                </div>
-            ) : (<div className='tableGrid--headerRow--dataCell__select' />)
-            }
+            ) : ((tableRowSelectInputType === 'radiobutton') ? <div className='tableGrid--headerRow--dataCell__select'/> : <div/>)
+        }
         {
             tableHeaderData.map( (data) => {
                 const sortOrder = (data.gridSelector === sortBy) ? orderBy : 'neutral'

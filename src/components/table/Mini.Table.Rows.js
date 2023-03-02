@@ -26,10 +26,10 @@ const onRowSelection = (rowData, isRowSelected, selectedRows) => {
     if (tableRowSelectInputType === 'radiobutton') {
         updatedSelectedRows(updateSelection(selectedRows, id, tableRowSelectInputType))
     } else if (tableRowSelectInputType === 'checkbox') {
-      const selectedRows = (isRowSelected) ? 
+      const rowsSelected = (isRowSelected) ? 
         updateSelection(selectedRows || [], id, tableRowSelectInputType) 
         : updateDeselection(selectedRows, id)
-      updatedSelectedRows(selectedRows)
+      updatedSelectedRows(rowsSelected)
     }
 }
 return (
@@ -40,7 +40,6 @@ return (
           :
             tableRowsData.map( (rowData, index) => {
               const {id} = rowData
-              console.log("In Component",selectedRows)
               let isRowSelected = selectedRows.includes(id)
               let rowSelectClass = isRowSelected ? 'selectedRow' : ''
               const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')
@@ -58,18 +57,18 @@ return (
                   )
                   }
                   {
-                  tableRowSelectInputType === 'checkbox' && (
-                      <div className='tableGrid--bodyRow--dataCell__select'>
-                      <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} />
-                      </div>
-                  )
+                    tableRowSelectInputType === 'checkbox' && (
+                        <div className='tableGrid--bodyRow--dataCell__select'>
+                        <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} />
+                        </div>
+                    )
                   }
-                  <div class="miniTableGrid--bodyRow--dataCell">
+                  <div className="miniTableGrid--bodyRow--dataCell">
                     {
                     (tableHeaderData.map( column => {
                         const { name, gridSelector } = column;
                         return(
-                          <div className='miniTableGrid--bodyRow-dateCell--data'>
+                          <div className='miniTableGrid--bodyRow-dateCell--data' key={`${gridSelector}-bodyRow-${id}`}>
                             <div className='miniTableGrid--bodyRow-dateCell--dataKey'>
                               {name}
                             </div>

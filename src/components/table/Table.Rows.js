@@ -21,10 +21,10 @@ const TableRows = () => {
         if (tableRowSelectInputType === 'radiobutton') {
             updatedSelectedRows(updateSelection(selectedRows, id, tableRowSelectInputType))
         } else if (tableRowSelectInputType === 'checkbox') {
-          const selectedRows = (isRowSelected) ? 
+          const rowsSelected = (isRowSelected) ? 
             updateSelection(selectedRows || [], id, tableRowSelectInputType) 
             : updateDeselection(selectedRows, id)
-          updatedSelectedRows(selectedRows)
+          updatedSelectedRows(rowsSelected)
         }
     }
     
@@ -36,7 +36,6 @@ const TableRows = () => {
                 :
                 tableRowsData.map( (rowData, index) => {
                     const {id} = rowData
-                    console.log("In Component",selectedRows)
                     let isRowSelected = selectedRows.includes(id)
                     let rowSelectClass = isRowSelected ? 'selectedRow' : ''
                     const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')

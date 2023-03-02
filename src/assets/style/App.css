@@ -83,6 +83,13 @@
 }
 
 .tableGrid--headerRow--dataCell__select {
+  padding-top: 30px;
+  border-bottom: 1px solid #eee;
+  padding-left: 10px;
+  width: 1.2%;
+}
+
+.miniTableGrid--headerRow--dataCell__select {
   padding-left: 10px;
   padding-top: 30px;
   width: 1.2%;
