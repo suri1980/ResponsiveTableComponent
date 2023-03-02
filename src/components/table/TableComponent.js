@@ -8,31 +8,24 @@ import MiniTableRows from './Mini.Table.Rows';
 
 const TableComponent = (props) => {
 
- 
-    // const {mediaWidth} = useViewport()
-
-    // console.log(width)
-
     const { mediaWidth } = useViewport()
     const minTableWidth = 600
 
     const {
         datatype,
         tableHeaderData,
-        tableData: tableRowsData,
+        tableData: data,
         tableHeaderCaption,
         tableFooterCaption,
         tableRowSelectInputType,
-        sortable = false,
         totalColumns = 0,
     } = props
 
-    const [tableData, updateRowsData] = useState(tableRowsData)
+    const [tableRowsData, updateRowsData] = useState(data)
     const [selectedRowsIndex, updateSelectedRowsIndexState] = useState([])
-    const [sortOption, updateSortOptions] = useState({
-      sortable,
-      by: 'id',
-      order: 'asc'
+    const [sortOptions, updateSortOptions] = useState({
+      sortBy: 'id',
+      sortOrder: 'nuetral'
     })
     const lineRefs = useRef([]);
 
@@ -41,13 +34,10 @@ const TableComponent = (props) => {
       if (selectedRowsIndex) {
         currentRowIndexes = [...new Set(selectedRowsIndex)]
       }
-      //console.log(`Selected Rows - ${selectedRowsIndex}`)
-      //console.log(currentRowIndexes)
       return currentRowIndexes
     }
 
     const onRowSelection = (rowData) => {
-      //console.log(rowData)
       //console.log(getSelectedRowsIndex())
     }
 
@@ -79,10 +69,13 @@ const TableComponent = (props) => {
       tableHeaderCaption,
       tableFooterCaption,
       tableRowSelectInputType,
+      updateRowsData,
       getSelectedRowsIndex,
       onRowSelection,
       totalColumns,
       mediaWidth,
+      sortOptions,
+      updateSortOptions,
       handleSelectAll: (isSelected) => {
         let selectedRowIndex = []
         selectedRowIndex = tableRowsData.map(row => row['id'])

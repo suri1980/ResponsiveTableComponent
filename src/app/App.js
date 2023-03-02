@@ -13,49 +13,53 @@ function App() {
     {
       name: "Operator",
       gridSelector: 'operator',
+      sortable: true
     },
     {
       name: "Headset Display",
-      gridSelector: 'headsetDisplay'
+      gridSelector: 'headsetDisplay',
+      sortable: true
     },
     {
       name: "3G Availability",
-      gridSelector: 'threeGAvailability'
+      gridSelector: 'threeGAvailability',
+      sortable: true
     },
     {
       name: "Desination",
-      gridSelector: 'destination'
+      gridSelector: 'destination',
+      sortable: false
     }
   ];
   
   const tableData = [
     {
       id: 1,
-      operator: "*Celcom Axiata (LTE)",
+      operator: "Celcom Axiata (LTE)",
       headsetDisplay: "CELCOM / My Celcom / 502 19",
       threeGAvailability: "Yes",
-      destination: 'China'
+      destination: 'Singapore'
     },
     {
       id: 2,
-      operator: "*DiGi Telecom (LTE)",
+      operator: "DiGi Telecom (LTE)",
       headsetDisplay: "DiGi 1800 / DiGi /  MYMY18",
       threeGAvailability: "Yes",
       destination: 'China1'
     },
     {
       id: 3,
-      operator: "*Maxis (LTE)",
+      operator: "Maxis (LTE)",
       headsetDisplay: "U Mobile / MYS 18 / MY 18",
-      threeGAvailability: "Yes",
-      destination: 'China2'
+      threeGAvailability: "No",
+      destination: 'Australia'
     },
     {
       id: 4,
       operator: "U Mobile (LTE)",
       headsetDisplay: "U Mobile / MYS 18 / MY 18",
       threeGAvailability: "Yes",
-      destination: 'China3'
+      destination: 'India'
     }
   ];
 
@@ -64,13 +68,13 @@ function App() {
   return (
     <div className="App">
       <TableComponent 
-      datatype={tableDataType}
-      tableHeaderData={headerData}
-      tableData={tableData} 
-      tableHeaderCaption={tableHeaderCaption}
-      tableFooterCaption={tableFooterCaption}
-      tableRowSelectInputType={tableRowSelectInputType}
-      totalColumns={headerData.length}
+        datatype={tableDataType}
+        tableHeaderData={headerData}
+        tableData={tableData} 
+        tableHeaderCaption={tableHeaderCaption}
+        tableFooterCaption={tableFooterCaption}
+        tableRowSelectInputType={tableRowSelectInputType}
+        totalColumns={headerData.length}
       />
     </div>
   );

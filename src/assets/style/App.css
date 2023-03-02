@@ -5,6 +5,36 @@
   height: 100vh;
 }
 
+.neutral {
+  display: block;
+  width: 10px;
+  height: 17px;
+  background-image: url(../icons/sort_nuetral.svg);
+  background-size: cover;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.asc {
+  display: block;
+  width: 12px;
+  height: 17px;
+  background-image: url(../icons/sort_asc.svg);
+  background-size: cover;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.desc {
+  display: block;
+  width: 12px;
+  height: 17px;
+  background-image: url(../icons/sort_desc.svg);
+  background-size: cover;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
 .tableGrid{
   border: 1px solid #eee;
   border-radius: 9px;
