@@ -45,7 +45,7 @@ return (
               const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')
               lineRefs.current[index] = lineRefs.current[index] || createRef()
               return (
-                  <div className={`tableGrid--bodyRow ${rowSelectClass}`} onClick={ canSelectRow ? (e) => {
+                  <div className={`miniTableGrid--bodyRow ${rowSelectClass}`} onClick={ canSelectRow ? (e) => {
                     const isInputChecked = lineRefs.current[index].current.checked || false
                     onRowSelection(rowData, !isInputChecked, selectedRows) 
                   }: ()=>{}} key={`select-${id}`}>

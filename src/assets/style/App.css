@@ -37,14 +37,14 @@
 
 .tableGrid{
   border: 1px solid #eee;
-  border-radius: 9px;
+  border-radius: 16px;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
   width: clamp(90vw, 1390px, 40vw);
 }
 
 .mobileTableGrid {
   border: 1px solid #eee;
-  border-radius: 9px;
+  border-radius: 16px;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
   width: clamp(90vw, 1390px, 40vw);
 }
@@ -53,16 +53,16 @@
   display: flex;
   justify-content: space-between;
   background-color: #F7F7F7;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   padding: 0 1em;
 }
 .miniTableGrid--headerRow {
   display: flex;
   justify-content: flex-start;
   background-color: #F7F7F7;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   padding: 0 1em;
 }
 
