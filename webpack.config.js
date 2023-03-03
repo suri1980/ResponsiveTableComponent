@@ -28,14 +28,17 @@ module.exports = {
         }
     ]
   },
+  output: {
+    path: path.resolve(__dirname, "docs"),
+    filename: "appBuild.js",
+    chunkFilename: "[name].js",
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.EnvironmentPlugin({
       VERSION: PACKAGE.version,
     }),
-
-    // Take Reference of HTML File.
     new HtmlWPPlugin({
       inject: true,
       template: path.resolve(__dirname, "public/index.html"),

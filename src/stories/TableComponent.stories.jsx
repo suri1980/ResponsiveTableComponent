@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import TableComponent from '../components/table/TableComponent'
 
 export default {
-    title: 'Example/Table Component',
+    title: 'Components/Table Component',
     component: TableComponent,
     argTypes: {
 

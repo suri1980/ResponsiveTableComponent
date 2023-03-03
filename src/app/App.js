@@ -45,7 +45,7 @@ function App() {
       operator: "DiGi Telecom (LTE)",
       headsetDisplay: "DiGi 1800 / DiGi /  MYMY18",
       threeGAvailability: "Yes",
-      destination: 'China1'
+      destination: 'China'
     },
     {
       id: 3,

@@ -4,7 +4,7 @@ import { TableContext } from '../lib/contexts/TableContext'
 
 
 export default {
-    title: 'Example/RadioButton',
+    title: 'Components/RadioButton',
     component: RadioButton,
     argTypes: {
 

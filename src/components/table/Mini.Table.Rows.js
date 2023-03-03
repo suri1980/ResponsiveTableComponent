@@ -6,18 +6,12 @@ import { updateSelection, updateDeselection } from '../../utils/table.utils'
 
 const MiniTableRows = () => {
   const {
-    datatype,
     tableRowsData = [],
     tableHeaderData = [],
-    tableHeaderCaption,
-    tableFooterCaption,
     tableRowSelectInputType,
-    rowsSelectionType,
-    getSelectedRowsIndex,
-    updateSelectedRowsIndex,
-      selectedRows = [], 
-      updatedSelectedRows
-    } = useContext(TableContext);
+    selectedRows = [], 
+    updatedSelectedRows
+  } = useContext(TableContext);
 
 const lineRefs = useRef([]);
 

@@ -11,6 +11,7 @@ npm install
 ### Clean Build App
 ```
 npm run clean
+npm run build (it will build storybook too)
 npm run dev
 ```
 
@@ -51,6 +52,15 @@ npm run test
 <img width="724" alt="image" src="https://user-images.githubusercontent.com/1085817/222638632-a44743e7-3edb-4e1f-9ff1-a97fe91a71de.png">
 ```
 
-### StoryBook
+### RUN Story book
 
+```
+npm run storybook
+```
+
+### Run Story book
+
+```
+npm run storybook
+```
 

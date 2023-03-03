@@ -6,12 +6,7 @@ const MiniTableHeader = () => {
     const {
         tableRowsData = [],
         tableRowSelectInputType = '',
-        handleSelectAll,
-        getSelectedRowsIndex,
         tableHeaderCaption = '',
-        sortOptions,
-        updateRowsData,
-        updateSortOptions,
         selectedRows = [], 
         updatedSelectedRows
     } = useContext(TableContext)

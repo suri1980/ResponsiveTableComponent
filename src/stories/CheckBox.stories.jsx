@@ -5,7 +5,7 @@ import styles from '../components/input/checkbox/checkbox.css'
 
 
 export default {
-    title: 'Example/CheckBox',
+    title: 'Components/CheckBox',
     component: CheckBox,
     argTypes: {
 
@@ -21,7 +21,7 @@ StatusChecked.decorators = [
 ]
 
 StatusChecked.args = {
-    name: 'radio',
+    name: 'checkbox',
     value: 1,
     checked: true
 }
