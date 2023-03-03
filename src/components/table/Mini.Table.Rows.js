@@ -70,10 +70,10 @@ return (
                         return(
                           <div className='miniTableGrid--bodyRow-dateCell--data' key={`${gridSelector}-bodyRow-${id}`}>
                             <div className='miniTableGrid--bodyRow-dateCell--dataKey'>
-                              {name}
+                              {`${name} :`}
                             </div>
                             <div className='miniTableGrid--bodyRow-dateCell--dataValue'>
-                              {rowData[gridSelector]}
+                              ${rowData[gridSelector]}
                             </div>
                           </div>
                         )
