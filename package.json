@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "clean": "rm package-lock.json && rm -rf node_modules && rm -rf .build && npm install",
-    "build": "rm -rf .build && webpack --mode production && npm run build-storybook",
+    "clean": "rm package-lock.json && rm -rf node_modules && rm -rf docs && npm install",
+    "build": "rm -rf docs && webpack --mode production && mkdir ./docs/storybook && npm run build-storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook && mkdir .build/storybook && mv storybook-static/* .build/storybook",
+    "build-storybook": "build-storybook && mkdir docs/storybook && mv storybook-static/* docs/storybook",
     "test": "jest --env=jsdom",
     "coverage": "jest --env=jsdom --coverage"
   },

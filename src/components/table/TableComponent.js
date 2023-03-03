@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, createRef, useMediaPredicate } from 'react'
+import React, { useRef, useState } from 'react'
 import { TableContext } from '../../lib/contexts/TableContext'
 import TableHeader from './Table.Header'
 import TableRows from './Table.Rows'

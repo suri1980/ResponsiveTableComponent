@@ -7,7 +7,7 @@ function App() {
   const tableHeaderCaption = "This is table head caption"
   const tableFooterCaption = "This is table foot caption"
   const tableDataType = 'table-type'
-  const tableRowSelectInputType = "radiobutton"
+  const tableRowSelectInputType = "checkbox"
 
   const headerData = [
     {

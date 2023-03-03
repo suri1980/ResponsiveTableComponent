@@ -1,6 +1,7 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
 import RadioButton from '../components/input/radiobutton/RadioButton';
+import { TableContext } from '../lib/contexts/TableContext'
+
 
 export default {
     title: 'Example/RadioButton',
@@ -10,16 +11,29 @@ export default {
     }
 }
 
+
+
 const Template = (args) => <RadioButton {...args} />
 
-export const CheckedCase = Template.bind({})
-CheckedCase.args = {
+export const StatusChecked = Template.bind({})
+
+StatusChecked.decorators = [
+    Story => (<TableContext.Provider value={{selectedRows: [], updatedSelectedRows: () => {} }}><Story /></TableContext.Provider>)
+]
+
+StatusChecked.args = {
     name: 'radio',
-    checked: true,
+    value: 1,
+    checked: true
 }
 
-export const Uncheckedase = Template.bind({})
-Uncheckedase.args = {
+export const StatusUnChecked = Template.bind({})
+
+StatusUnChecked.decorators = [
+    Story => (<TableContext.Provider value={{selectedRows: [], updatedSelectedRows: () => {} }}><Story /></TableContext.Provider>)
+]
+
+StatusUnChecked.args = {
     name: 'radio',
-    checked: false,
+    checked: true,
 }

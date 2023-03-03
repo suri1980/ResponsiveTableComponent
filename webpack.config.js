@@ -8,7 +8,7 @@ const CopyWPPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, ".build"),
+    path: path.resolve(__dirname, "docs"),
     filename: "appBuild.js",
     chunkFilename: "[name].js",
   },
