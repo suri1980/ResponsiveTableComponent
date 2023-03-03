@@ -45,21 +45,21 @@ return (
               const canSelectRow = !!(tableRowSelectInputType === 'radiobutton' || tableRowSelectInputType === 'checkbox')
               lineRefs.current[index] = lineRefs.current[index] || createRef()
               return (
-                  <div className='miniTableGrid--bodyRow' onClick={ canSelectRow ? (e) => {
+                  <div className={`tableGrid--bodyRow ${rowSelectClass}`} onClick={ canSelectRow ? (e) => {
                     const isInputChecked = lineRefs.current[index].current.checked || false
                     onRowSelection(rowData, !isInputChecked, selectedRows) 
                   }: ()=>{}} key={`select-${id}`}>
                   {
                   tableRowSelectInputType === 'radiobutton' && (
                       <div className='tableGrid--bodyRow--dataCell__select' >
-                      <RadioButton innerRef={lineRefs.current[index]} key={`radio-${id}`} name="selection" checked={isRowSelected} />
+                      <RadioButton innerRef={lineRefs.current[index]} key={`radio-${id}`} name="selection" checked={isRowSelected} value={id} />
                       </div>
                   )
                   }
                   {
                     tableRowSelectInputType === 'checkbox' && (
                         <div className='tableGrid--bodyRow--dataCell__select'>
-                        <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} />
+                        <Checkbox innerRef={lineRefs.current[index]} key={`checkbox-${id}`} name="selection" checked={isRowSelected} value={id} />
                         </div>
                     )
                   }
